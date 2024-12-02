@@ -1,0 +1,170 @@
+﻿/* Оформление текста */
+#styledText {
+    padding: 2cm 1cm 2cm 3cm;
+    font-family: 'Times New Roman', serif;
+    font-size: 14pt;
+    background-color: #f0f0f0;
+    text-indent: 1.5cm;
+}
+
+.drop-cap {
+    font-size: 14pt;   
+    line-height: 1.6;
+}
+
+.first-letter{
+    float: left;
+    font-size: 18pt;
+    line-height: 1;
+    margin-right: 4px;
+    color:#d2691e;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5em; 
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #34495e; 
+    font-size: 2em; 
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+h3 {
+    color: #7f8c8d;
+    font-size: 1.5em; 
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Оформление таблицы */
+#resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#resultsTable th {
+    text-align: center;
+    background-color: #20B2AA;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#resultsTable td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* Четные и нечетные столбцы */
+#resultsTable tbody tr td:nth-child(odd) {
+    background-color: #fff; /* Белый фон для нечетных столбцов */
+}
+
+#resultsTable tbody tr td:nth-child(even) {
+    background-color: #F0FFFF; /* Светлый фон для четных столбцов */
+}
+
+/* Выровнять первый столбец по ширине */
+#resultsTable td:first-child {
+    text-align: justify; /* Выровнять по ширине */
+}
+
+/* Выровнять второй столбец по центру */
+#resultsTable td:nth-child(2) {
+    text-align: center; /* Выровнять по центру */
+}
+
+/* Оформление списка */
+nav ul {
+    list-style-type: square;
+    margin-left: 1cm;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+/* Псевдокласс для ссылок */
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: green;
+}
+
+/* Footer */
+.footer {
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+/* CSS3 возможности - градиентный фон и тени */
+h1 {
+    background: linear-gradient(to right, #708090, #cfdef3);
+    box-shadow: 2px 2px 5px ;
+}
+
+/* Каскадность - переопределение стиля для ссылок */
+.styled-list a {
+    color: green;
+}
+
+.styled-list a:hover {
+    color: darkgreen;
+}
+
+/* Изображение с обтеканием */
+.float-image {
+    float: right;
+    margin:10px;
+    width: 400px;
+}
+
+/* Позиционирование */
+.content-wrapper {
+    position: relative;
+    top: 10px; /* Сдвинет блок на 10 пикселей вниз */
+}
+
+/* Оформление таблицы Лиг */
+#leagueTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#leagueTable th {
+    text-align: center;
+    background-color: #20B2AA;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#leagueTable td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* Четные и нечетные строки */
+#leagueTable tbody tr:nth-child(odd) {
+    background-color: #fff; /* Белый фон для нечетных строк */
+}
+
+#leagueTable tbody tr:nth-child(even) {
+    background-color: #F0FFFF; /* Светлый фон для четных строк */
+}
+
+/* Выровнять первый столбец по ширине */
+#leagueTable td:first-child {
+    text-align: justify; /* Выровнять по ширине */
+}
+
+/* Выровнять второй столбец по центру */
+#leagueTable td:nth-child(2) {
+    text-align: center; /* Выровнять по центру */
+}

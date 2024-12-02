@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FootballLeagues>
+    <League>
+        <Name>Английская Премьер-лига</Name>
+        <Country>Англия</Country>
+        <Founded>1992</Founded>
+        <Teams>20</Teams>
+    </League>
+    <League>
+        <Name>Ла Лига</Name>
+        <Country>Испания</Country>
+        <Founded>1929</Founded>
+        <Teams>20</Teams>
+    </League>
+    <League>
+        <Name>Серия A</Name>
+        <Country>Италия</Country>
+        <Founded>1898</Founded>
+        <Teams>20</Teams>
+    </League>
+    <League>
+        <Name>Бундеслига</Name>
+        <Country>Германия</Country>
+        <Founded>1963</Founded>
+        <Teams>18</Teams>
+    </League>
+    <League>
+        <Name>Лига 1</Name>
+        <Country>Франция</Country>
+        <Founded>1932</Founded>
+        <Teams>20</Teams>
+    </League>
+    <League>
+        <Name>Премьер-лига России</Name>
+        <Country>Россия</Country>
+        <Founded>2001</Founded>
+        <Teams>16</Teams>
+    </League>
+    <League>
+        <Name>Лига Мексики</Name>
+        <Country>Мексика</Country>
+        <Founded>1943</Founded>
+        <Teams>18</Teams>
+    </League>
+    <League>
+        <Name>Природная лига</Name>
+        <Country>Нидерланды</Country>
+        <Founded>1956</Founded>
+        <Teams>18</Teams>
+    </League>
+    <League>
+        <Name>Бразильская Серия A</Name>
+        <Country>Бразилия</Country>
+        <Founded>1971</Founded>
+        <Teams>20</Teams>
+    </League>
+    <League>
+        <Name>Аргентинская Примера</Name>
+        <Country>Аргентина</Country>
+        <Founded>1891</Founded>
+        <Teams>28</Teams>
+    </League>
+    <League>
+        <Name>Суперлига Турции</Name>
+        <Country>Турция</Country>
+        <Founded>1959</Founded>
+        <Teams>18</Teams>
+    </League>
+    <League>
+        <Name>Премьер-лига Украины</Name>
+        <Country>Украина</Country>
+        <Founded>1991</Founded>
+        <Teams>14</Teams>
+    </League>
+    <League>
+        <Name>Саудовская Про-лига</Name>
+        <Country>Саудовская Аравия</Country>
+        <Founded>1976</Founded>
+        <Teams>16</Teams>
+    </League>
+    <League>
+        <Name>Лига Японии</Name>
+        <Country>Япония</Country>
+        <Founded>1993</Founded>
+        <Teams>18</Teams>
+    </League>
+    <League>
+        <Name>Премьер-лига Южной Африки</Name>
+        <Country>Южная Африка</Country>
+        <Founded>1996</Founded>
+        <Teams>16</Teams>
+    </League>
+</FootballLeagues>

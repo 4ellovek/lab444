@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбольные турниры и лиги</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+</head>
+<body class="light-theme">
+    <!-- Основная часть -->
+    <div id="styledText">
+        <h1 id="mainH">Футбольные турниры и лиги</h1>
+        <button onclick="changeHeaderColor()">Изменить цвет заголовка</button>
+        <button id="theme">Переключить тему</button>
+        <h3>Навигация по сайту</h3>
+        <nav>
+            <ul>
+                <li><a href="#tournaments">Крупнейшие турниры</a></li>
+                <li><a href="#leagues">Популярные лиги</a></li>
+                <li><a href="#results">Результаты турниров 2024 года</a></li>
+                <li><a href="#history">История турниров</a></li>
+            </ul>
+        </nav>
+        <div class="content-wrapper">
+            <img src="photo/football.jpg" alt="Футбол" class="float-image">
+            <p class="drop-cap">
+                <span class="first-letter">Ф</span>утбол - один из самых популярных видов спорта в мире. В этом документе представлены некоторые из крупнейших футбольных турниров и лиг. Изображение футбольного мяча демонстрирует важность этого вида спорта.
+            </p>
+        </div>
+
+        <!-- Крупнейшие футбольные турниры -->
+        <h2 id="tournaments">Крупнейшие футбольные турниры</h2>
+        <ol>
+            <li>Чемпионат мира по футболу</li>
+            <li>Чемпионат Европы по футболу</li>
+            <li>Кубок Америки</li>
+            <li>Кубок Азии</li>
+            <li>Кубок Африки</li>
+        </ol>
+
+        <!-- Популярные футбольные лиги -->
+        <h2 id="leagues">Популярные футбольные лиги</h2>
+        <input type="text" id="searchInput" placeholder="Поиск по лигам..." onkeyup="filterLeagues()">
+        
+        <h3>Список Лиг</h3>
+        <ul id="leagueListAsList"></ul> <!-- Список лиг -->
+        
+        <h3>Таблица Лиг</h3>
+        <table id="leagueTable" border="1">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Название</th>
+                    <th onclick="sortTable(1)">Страна</th>
+                    <th onclick="sortTable(2)">Год основания</th>
+                    <th onclick="sortTable(3)">Количество команд</th>
+                </tr>
+            </thead>
+            <tbody id="leagueList"></tbody>
+        </table>
+
+        <!-- Определения турниров -->
+        <h2>Определения</h2>
+        <dl>
+            <dt>Чемпионат мира по футболу</dt>
+            <dd>Международный футбольный турнир, проводимый раз в четыре года.</dd>
+            <dt>Лига чемпионов УЕФА</dt>
+            <dd>Европейский клубный турнир для лучших команд из разных стран Европы.</dd>
+        </dl>
+
+        <h2 id="results">Результаты турниров 2024 года</h2>   
+        <button onclick="sortTableResults()">Сортировать таблицу</button>
+        <button onclick="addRow()">Добавить результат</button>
+        <button onclick="ToTop()">Наверх</button>
+        <table id="resultsTable">
+            <caption>Результаты футбольных турниров</caption>
+            <thead>
+                <tr>
+                    <th>Турнир</th>
+                    <th>Победитель</th>
+                    <th>Финальный счет</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Чемпионат мира</td>
+                    <td>Франция</td>
+                    <td>4-2</td>
+                </tr>
+                <tr>
+                    <td>Лига чемпионов УЕФА</td>
+                    <td>Реал Мадрид</td>
+                    <td>2-0</td>
+                </tr>
+                <tr>
+                    <td>Кубок Америки</td>
+                    <td>Аргентина</td>
+                    <td>3-1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Функция загрузки данных XML
+        function loadXML() {
+            // Загружаем XML
+            $.ajax({
+                type: "GET",
+                url: "leagues.xml", // Путь к XML файлу
+                dataType: "xml",
+                success: function(xml) {
+                    displayLeagues(xml);
+                },
+                error: function() {
+                    alert("Ошибка при загрузке данных из XML.");
+                }
+            });
+        }
+        // Отображение данных о лигах
+        function displayLeagues(xml) {
+            var leagueList = $("#leagueList");
+            var leagueListAsList = $("#leagueListAsList");
+            // Очищаем текущий контент
+            leagueList.empty();
+            leagueListAsList.empty();
+            $(xml).find("League").each(function() {
+                var name = $(this).find("Name").text();
+                var country = $(this).find("Country").text();
+                var founded = $(this).find("Founded").text();
+                var teams = $(this).find("Teams").text();
+                // Добавляем данные в таблицу
+                leagueList.append(
+                    "<tr>" +
+                        "<td>" + name + "</td>" +
+                        "<td>" + country + "</td>" +
+                        "<td>" + founded + "</td>" +
+                        "<td>" + teams + "</td>" +
+                    "</tr>"
+                );
+                // Добавляем данные в список
+                leagueListAsList.append(
+                    "<li class='leagueItem'>" + name + "</li>"
+                );
+            });
+        }
+
+        // Фильтрация лиг
+        function filterLeagues() {
+    var input = document.getElementById('searchInput');
+    var filter = input.value.toLowerCase();
+
+    // Фильтрация списка лиг
+    var listItems = document.getElementsByClassName('leagueItem');
+    for (var i = 0; i < listItems.length; i++) {
+        var name = listItems[i].textContent || listItems[i].innerText;
+        listItems[i].style.display = name.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+    }
+
+    // Фильтрация таблицы лиг
+    var tableRows = document.getElementById("leagueTable").getElementsByTagName("tr");
+    for (var j = 1; j < tableRows.length; j++) { 
+        var cells = tableRows[j].getElementsByTagName("td");
+        var rowText = cells[0].textContent || cells[0].innerText; // Фильтрация по первой ячейке
+        tableRows[j].style.display = rowText.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
+    }
+}
+        // Сортировка таблицы лиг
+        function sortTable(columnIndex) {
+            var table = document.getElementById("leagueTable");
+            var rows = Array.from(table.rows).slice(1); // Извлекаем все строки таблицы
+            rows.sort(function(a, b) {
+                var cellA = a.cells[columnIndex].innerText;
+                var cellB = b.cells[columnIndex].innerText;
+                return cellA.localeCompare(cellB);
+            });
+            rows.forEach(function(row) {
+                table.appendChild(row);
+            });
+        }
+
+
+        // Сортировка таблицы результатов
+        function sortTableResults() {
+            let table = document.getElementById("resultsTable");
+            let rows = table.rows;
+            let sorted = Array.from(rows).slice(1).sort((rowA, rowB) => {
+                return rowA.cells[0].innerText.localeCompare(rowB.cells[0].innerText);
+            });
+
+            sorted.forEach(row => table.appendChild(row));
+        }
+
+        function addRow() {
+            const table = document.getElementById("resultsTable");
+            const row = table.insertRow();
+            row.insertCell().innerText = prompt("Название турнира:");
+            row.insertCell().innerText = prompt("Победитель:");
+            row.insertCell().innerText = prompt("Счёт:");
+
+            $(row).hide().fadeIn(1000); // Добавляем анимацию
+        }
+
+        function ToTop() {
+            window.scrollTo(0, 0);
+        }
+
+        // Функция изменения цвета заголовка
+        function changeHeaderColor() {
+            const header = document.getElementById("mainH");
+            header.style.color = header.style.color === "blue" ? "black" : "blue";
+        }
+
+        // Загрузка данных сразу при загрузке страницы
+        window.onload = loadXML;
+    </script>
+</body>
+</html>
